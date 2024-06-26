@@ -4,14 +4,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Repartidores</title>
-        <link rel="stylesheet" href="inicio.css">
+        <link rel="stylesheet" href="../inicio.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 
 <body>
     <header class="header">
         <b>Logo</b>
         <div>
-            <a href="1_inicio.php">Regresar</a>
+            <a href="../1_inicio.php">Regresar</a>
         </div>
     </header>
 
@@ -96,6 +97,13 @@
         
     </section>
 
+    <section class="second_section">
+        <button type="button" class="button" onclick="confirmSolicitar();">Solicitar</button>
+        <button type="button" class="button" onclick="window.location.href='3.2_realizar_pago.php';">Programar</button>
+        <button type="button" class="button" onclick="window.location.href='3.3_realizar_compra.php';">Cancelar</button>
+        <button type="button" class="button" onclick="window.location.href='3.3_realizar_compra.php';">Regresar</button>
+    </section>
+
     <p>PIE DE PÁGINA</p>
     <footer class="footer">
         <b>Logo</b>
@@ -128,6 +136,21 @@
             } else {
                 extraFields.classList.add('hidden');
             }
+        }
+
+        function confirmSolicitar() {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¿Estás seguro que deseas Solicitar este Servicio? Tu solicitud será enviada a todos nuestros repartidores inmediatamente.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'SÍ',
+            cancelButtonText: 'NO'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '3.1_enviar_recoger_paquete.php';
+            }
+        });
         }
     </script>
 </body>

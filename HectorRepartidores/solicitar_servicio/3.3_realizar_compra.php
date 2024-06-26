@@ -18,34 +18,29 @@
 
     <section class="first_section">
         <select id="categoria" name="categoria">
-            <option value="" disabled selected hidden>Pago a realizar</option>
-            <option value="recibo_agua">Recibo de Agua</option>
-            <option value="recibo_luz">Recibo de Luz</option>
-            <option value="recibo_gas">Recibo de Gas</option>
-            <option value="recibo_tv">Recibo de TV</option>
-            <option value="recibo_telefonia_internet">Recibo de Telefonía/Internet</option>
-            <option value="pago_oficina">Pago en Oficina</option>
-            <option value="pago_banco">Pago en Banco</option>
+            <option value="" disabled selected hidden>Tipo de compra</option>
+            <option value="alimentos_bebidas">Alimentos y bebidas</option>
+            <option value="despensa_abarrotes">Despensa y abarrotes</option>
+            <option value="salud_cuidado_personal">Salud y cuidado personal</option>
+            <option value="enseres_domesticos">Enseres domésticos</option>
+            <option value="accesorios_personales">Accesorios personales</option>
+            <option value="telefonia_movil">Telefonía Móvil</option>
+            <option value="electrodomesticos">Electrodomésticos</option>
+            <option value="computo_electronica">Cómputo y electrónica</option>
         </select>
         <div>
-            <label for="descripcion">Notas sobre el Pago</label>
+            <label for="descripcion">Descripción de la compra</label>
         </div>
-        <textarea id="descripcion" name="descripcion" placeholder="Detalles del pago" maxlength="500" required></textarea>
+        <textarea id="descripcion" name="descripcion" placeholder="Descripción de la compra" maxlength="500" required></textarea>
 
         <div class="form-group">
-            <label for="lugar1">Domicilio de Recolección del Recibo y Dinero</label>
+            <label for="lugar1">Domicilio de Recolección del Dinero</label>
             <br>
             <input type="text" id="lugar1" name="direccion1" placeholder="Ingrese la dirección" required>
         </div>
 
         <div class="form-group">
-            <label for="lugar2">Domicilio de Pago del Recibo</label>
-            <br>
-            <input type="text" id="lugar2" name="direccion1" placeholder="Ingrese la dirección" required>
-        </div>
-
-        <div class="form-group">
-            <label for="lugar3">Domicilio de Entrega del Recibo Pagado</label>
+            <label for="lugar3">Domicilio de Entrega de la Compra</label>
             <br>
             <input type="text" id="lugar3" name="direccion1" placeholder="Ingrese la dirección" required>
         </div>

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repartidores</title>
-    <link rel="stylesheet" href="inicio.css">
+    <link rel="stylesheet" href="../inicio.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
         <br>
         <button type="button" class="button" onclick="window.location.href='3.2_realizar_pago.php';">Realizar un Pago</button>
         <br>
-        <button type="button" class="button" onclick="window.location.href='2_solicitar_servicio.php';">Realizar una Compra</button>
+        <button type="button" class="button" onclick="window.location.href='3.3_realizar_compra.php';">Realizar una Compra</button>
     </section>
     <footer class="footer">
         <b>Logo</b>

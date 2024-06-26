@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repartidores</title>
-    <link rel="stylesheet" href="inicio.css">
+    <link rel="stylesheet" href="../inicio.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <header class="header">
         <b>Logo</b>
         <div>
-            <a href="">Registro</a>
+            <a href="../pagina_registro/pagina_registro.php">Registro</a>
             <a href="">Acceso</a>
         </div>
     </header>
@@ -32,7 +33,7 @@
                 <input type="text" id="whatsapp" name="whatsapp" inputmode="numeric" placeholder="Ingrese su número" required>
             </div>
             <div class="buttons">
-                <button type="button" id="regresar" onclick="window.location.href='1_inicio.php';">Regresar</button>
+                <button type="button" id="regresar" onclick="window.location.href='../1_inicio.php';">Regresar</button>
                 <button type="button" id="siguiente">Siguiente</button>
             </div>
             <div class="confirmation" style="display: none;">
@@ -62,7 +63,20 @@
             if (!nombre || !whatsapp || !apellido) {
                 alert('Por favor, rellene todos los campos obligatorios.');
             } else {
-                document.querySelector('.confirmation').style.display = 'block';
+                Swal.fire({
+                    title: '¿Los datos son correctos?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'SÍ',
+                    cancelButtonText: 'NO'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire('Datos enviados correctamente', '', 'success');
+                        setTimeout(function() {
+                            window.location.href = '2.2_tipo_de_servicio.php';
+                        }, 1200);
+                    }
+                });
             }
         });
 

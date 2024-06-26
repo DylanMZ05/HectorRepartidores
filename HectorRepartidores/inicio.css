@@ -1,0 +1,47 @@
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.header div {
+    margin-left: auto;
+}
+
+.header a {
+    margin: 0 5px;
+}
+
+.first_section {
+    margin: 10px 0;
+}
+
+.declaración {
+    margin: 15px 0;
+}
+
+.button {
+    margin: 7px 0;
+}
+
+.footer {
+    display: flex;
+    width: 100%;
+}
+
+.footer p {
+    display: block;
+}
+
+.footer div {
+    margin-left: auto;
+}
+
+.footer a {
+    margin: 0 5px;
+}
+
+.hidden {
+    display: none;
+    background-color: black;
+}
