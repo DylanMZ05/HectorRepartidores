@@ -33,7 +33,7 @@
                 <input type="text" id="whatsapp" name="whatsapp" inputmode="numeric" placeholder="Ingrese su número" required>
             </div>
             <div class="buttons">
-                <button type="button" id="regresar" onclick="window.location.href='../1_inicio.php';">Regresar</button>
+                <button type="button" id="regresar" onclick="window.location.href='../index.php';">Regresar</button>
                 <button type="button" id="siguiente">Siguiente</button>
             </div>
             <div class="confirmation" style="display: none;">

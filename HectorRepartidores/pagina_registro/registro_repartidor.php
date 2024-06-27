@@ -1,244 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registro Cliente</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-<style>
-    .error {
-        color: #000;
-        font-weight: bold;
-    }
-
-    .form-group label {
-        font-weight: bold;
-    }
-
-    .form-checkbox label {
-        font-weight: normal;
-    }
-
-    #imagePreviewContainer {
-        width: 150px;
-        height: 150px;
-        background-color: #f0f0f0;
-        border-radius: 50%;
-        border: 1px solid #000;
-        margin: 5px 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-        overflow: hidden;
-    }
-    #previewImage {
-        max-width: 100%;
-        max-height: 100%;
-        display: none;
-    }
-
-    #imageInput {
-        visibility: hidden;
-    }
-
-    #imageInput {
-        width: 0.1px;
-        height: 0.1px;
-        opacity: 0;
-        overflow: hidden;
-        position: absolute;
-        z-index: -1;
-    }
-
-    #imageInput + label {
-        font-size: 1em;
-        font-weight: 300;
-        color: white;
-        background-color: #4CAF50;
-        display: inline-block;
-        cursor: pointer;
-        padding: 1px 5px;
-        border-radius: 5px;
-    }
-    #imageInput + label:hover {
-        background-color: #45a049;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Repartidor</title>
+    <link rel="stylesheet" href="registro.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-    <section class="first_section">
-        <h2>Registrarse</h2>
-        <div id="errorContainer" class="error" style="display: none;">
-            La imagen seleccionada debe tener una relación de aspecto 1:1.
+<section>
+    <h1>Editar perfil</h1>
+    <form method="post" action="#" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <div>
+            <img src="../imgperfil.jpg" alt="avatar" id="img" />
+            <input type="file" name="foto" id="foto" accept="image/*" />
+            <label for="foto">Cambiar foto</label>
         </div>
-        
-        <div id="imagePreviewContainer">
-            <img id="previewImage" src="#" alt="Vista previa de la imagen">
+        <div>
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" autocomplete="off" required />
         </div>
-
-        <form id="imageForm" enctype="multipart/form-data">
-
+        <div>
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" id="apellido" autocomplete="off" required />
+        </div>
+        <div>
+            <label for="whatsapp">WhatsApp</label>
+            <input type="number" name="whatsapp" autocomplete="off" required min="1000000000" max="9999999999" />
+        </div>
+        <div>
+            <label for="codigo-postal">Mi Código Postal</label>
+            <input type="number" name="codigo-postal" autocomplete="off" required min="10000" max="99999" />
+        </div>
+        <p>Para desbloquear la configuración debes tener una membresía superior.</p>
+        <fieldset>
+            <legend>Configuración</legend>
             <div>
-                <input type="file" id="imageInput" accept="image/*">
-                <label for="imageInput">Selecciona una imagen</label>
-                <br>
-                <label for="nombre">Nombre</label><br>
-                <input type="text" id="nombre" name="nombre" required><br><br>
+                <input type="checkbox" name="cobrar-efectivo" id="cobrar-efectivo" checked disabled />
+                <label for="cobrar-efectivo">Cobrar en Efectivo</label>
             </div>
-
-
-            <div class="form-group">
-                <label for="nombre">Nombre</label><br>
-                <input type="text" id="nombre" name="nombre" required><br><br>
+            <div>
+                <input type="checkbox" name="cobrar-transferencia" id="cobrar-transferencia" checked disabled />
+                <label for="cobrar-transferencia">Cobrar con Transferencia</label>
             </div>
-
-            <div class="form-group">
-                <label for="apellido">Apellido</label><br>
-                <input type="text" id="apellido" name="apellido" required><br><br>
+            <div>
+                <input type="checkbox" name="clientes-codigo-postal" id="clientes-codigo-postal" checked disabled />
+                <label for="clientes-codigo-postal">Sólo Clientes con mi Código Postal</label>
             </div>
-
-            <div class="form-group">
-                <label for="whatsapp">WhatsApp</label><br>
-                <input type="text" id="whatsapp" name="whatsapp" pattern="[0-9]{10}" required><br><br>
+            <div>
+                <input type="checkbox" name="clientes-estrellas" id="clientes-estrellas" disabled />
+                <label for="clientes-estrellas">Sólo Clientes con 3 Estrellas o más</label>
             </div>
+        </fieldset>
 
-            <div class="form-group">
-                <label for="codigo_postal">Mi Código Postal</label><br>
-                <input type="text" id="codigo_postal" name="codigo_postal" pattern="[0-9]{5}" required><br><br>
+        <fieldset>
+            <legend>Datos para recibir transferencias</legend>
+            <div>
+                <label for="banco">Banco</label>
+                <input type="text" name="banco" id="banco" autocomplete="off" required />
             </div>
-
-            <div class="form-group form-checkbox">
-                <label>Configuración</label><br>
-                <input type="checkbox" id="cobrar_efectivo" name="configuracion" value="Cobrar en efectivo">
-                <label for="cobrar_efectivo">Cobrar en efectivo</label><br>
-                <input type="checkbox" id="cobrar_transferencia" name="configuracion" value="Cobrar con Transferencia">
-                <label for="cobrar_transferencia">Cobrar con Transferencia</label><br>
-                <input type="checkbox" id="solo_cp_cliente" name="configuracion" value="Sólo Clientes con mi Código Postal">
-                <label for="solo_cp_cliente">Sólo Clientes con mi Código Postal</label><br>
-                <input type="checkbox" id="solo_3_estrellas" name="configuracion" value="Sólo Clientes con 3 Estrellas o más">
-                <label for="solo_3_estrellas">Sólo Clientes con 3 Estrellas o más</label><br><br>
+            <div>
+                <label for="beneficiario">Beneficiario</label>
+                <input type="text" name="beneficiario" id="beneficiario" autocomplete="off" required />
             </div>
-
-            <div class="form-group">
-                <label for="banco">Banco para transferencias</label><br>
-                <input type="text" id="banco" name="banco"><br><br>
+            <div>
+                <label for="tarjeta">Tarjeta</label>
+                <input type="number" name="tarjeta" id="tarjeta" autocomplete="off" required min="16"/>
             </div>
+        </fieldset>
 
-            <div class="form-group">
-                <label for="beneficiario">Beneficiario</label><br>
-                <input type="text" id="beneficiario" name="beneficiario"><br><br>
+        <button style="margin-top: 10px;"type="button" onclick="window.location.href='../CPyD/codigos_postales_repartidor.php';">Modificar Códigos Postales</button>
+        <button type="button" class="boton_contraseñas" onclick="togglePasswordFields()">Cambiar Contraseñas</button>
+
+        <div id="passwordFields" style="display: none;">
+            <div></div>
+            <div>
+                <label for="password-actual">Contraseña actual</label>
+                <input type="password" name="password-actual" id="password-actual" autocomplete="off" minlength="8"/>
             </div>
-
-            <div class="form-group">
-                <label for="tarjeta">Tarjeta (16 dígitos)</label><br>
-                <input type="text" id="tarjeta" name="tarjeta" pattern="[0-9]{16}"><br><br>
+            <div>
+                <label for="password-nueva">Nueva contraseña</label>
+                <input type="password" name="password-nueva" id="password-nueva" autocomplete="off" minlength="8"/>
             </div>
-
-            <div class="form-group">
-                <label for="current_password">Contraseña actual</label><br>
-                <input type="password" id="current_password" name="current_password"><br><br>
+            <div>
+                <label for="password-repetir">Repetir contraseña</label>
+                <input type="password" name="password-repetir" id="password-repetir" autocomplete="off" minlength="8"/>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="new_password">Nueva contraseña</label><br>
-                <input type="password" id="new_password" name="new_password" minlength="8"><br><br>
-            </div>
-
-            <div class="form-group">
-                <label for="repeat_password">Repetir contraseña</label><br>
-                <input type="password" id="repeat_password" name="repeat_password" minlength="8"><br><br>
-            </div>
-
+        <div class="buttons">
             <button type="submit">Actualizar</button>
-            <button type="button" onclick="cancel()">Regresar</button>
-        </form>
-    </section>
+            <button type="button" onclick="window.location.href='../index.php';">Regresar</button>
+        </div>
+    </form>
+</section>
 
-    <script>
-        document.getElementById('imageForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            validateAndRegister();
-        });
+<script>
+    const file = document.getElementById('foto');
+    const img = document.getElementById('img');
+    const aspectRatioMin = 0.9;
+    const aspectRatioMax = 1.1;
+    const passwordFields = document.getElementById('passwordFields');
 
-        function validateAndRegister() {
-            const nombre = document.getElementById('nombre').value;
-            const apellido = document.getElementById('apellido').value;
-            const whatsapp = document.getElementById('whatsapp').value;
-            const codigoPostal = document.getElementById('codigo_postal').value;
-            const newPassword = document.getElementById('new_password').value;
-            const repeatPassword = document.getElementById('repeat_password').value;
-
-            const nombreCompleto = nombre + ' ' + apellido;
-
-            if (nombre.length === 0 || apellido.length === 0) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Por favor, ingresa tanto el nombre como el apellido.'
-                });
-                return;
+    file.addEventListener('change', e => {
+        if (e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const imgElement = new Image();
+                imgElement.src = event.target.result;
+                imgElement.onload = function() {
+                    const aspectRatio = imgElement.width / imgElement.height;
+                    if (aspectRatio >= aspectRatioMin && aspectRatio <= aspectRatioMax) {
+                        img.src = event.target.result;
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'La imagen debe tener un aspecto cuadrado o cercano a 1:1.',
+                        });
+                        img.src = '../imgperfil.jpg';
+                        file.value = '';
+                    }
+                }
             }
+            reader.readAsDataURL(e.target.files[0]);
+        } else {
+            img.src = '../imgperfil.jpg';
+        }
+    });
 
-            if (nombreCompleto.length <= 10) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'El nombre completo debe tener más de 10 caracteres.'
-                });
-                return;
-            }
+    function validateForm() {
+        const nombre = document.getElementById('nombre').value.trim();
+        const apellido = document.getElementById('apellido').value.trim();
+        const totalLength = nombre.length + apellido.length;
 
-            const whatsappNumber = parseInt(whatsapp);
-            if (whatsappNumber < 1000000000 || whatsappNumber >= 9999999999) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'El número de WhatsApp debe ser un número válido.'
-                });
-                return;
-            }
-
-            const codigoPostalNumber = parseInt(codigoPostal);
-            if (codigoPostalNumber <= 1000 || codigoPostalNumber >= 99999) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'El código postal debe ser un número válido.'
-                });
-                return;
-            }
-
-            if (newPassword && newPassword.length < 8) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'La nueva contraseña debe tener al menos 8 caracteres.'
-                });
-                return;
-            }
-
-            if (newPassword !== repeatPassword) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Las nuevas contraseñas no coinciden.'
-                });
-                return;
-            }
-
+        if (totalLength < 7) {
             Swal.fire({
-                icon: 'success',
-                title: 'Registro exitoso',
-                text: '¡Se ha registrado exitosamente!'
-            }).then(() => {
-                document.getElementById('imageForm').reset();
+                icon: 'error',
+                title: 'Error',
+                text: 'El nombre y el apellido deben sumar al menos 7 caracteres.',
             });
+            return false;
         }
 
-        function cancel() {
-            window.location.href = '../1_inicio.php';
+        const passwordNueva = document.getElementById('password-nueva').value.trim();
+        const passwordRepetir = document.getElementById('password-repetir').value.trim();
+
+        if (passwordNueva !== passwordRepetir) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Las contraseñas nuevas no coinciden.',
+            });
+            return false;
         }
-    </script>
+
+        return true;
+    }
+
+    function togglePasswordFields() {
+        if (passwordFields.style.display === 'none') {
+            passwordFields.style.display = 'block';
+        } else {
+            passwordFields.style.display = 'none';
+            document.getElementById('password-actual').value = '';
+            document.getElementById('password-nueva').value = '';
+            document.getElementById('password-repetir').value = '';
+        }
+    }
+</script>
 </body>
 </html>

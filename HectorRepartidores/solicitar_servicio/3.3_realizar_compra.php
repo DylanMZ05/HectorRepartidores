@@ -12,7 +12,7 @@
     <header class="header">
         <b>Logo</b>
         <div>
-            <a href="../1_inicio.php">Regresar</a>
+            <a href="../index.php">Regresar</a>
         </div>
     </header>
 

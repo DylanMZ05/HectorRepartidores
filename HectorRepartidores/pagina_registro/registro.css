@@ -1,0 +1,75 @@
+
+h1 {
+    text-align: center;
+    color: #1F5F74;
+    border-bottom: 1px solid #C4CBCE;
+    padding-bottom: .2em;
+}
+
+form > div {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+form img {
+    width: 200px;
+    border-radius: 50%;
+    border: 6px solid #AAA;
+}
+
+form div:first-child {
+    align-items: center;
+}
+
+form div:first-child input {
+    display: none;
+}
+
+form div:first-child label {
+    background: #1F5F74;
+    color: white;
+    padding: 6px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+form input {
+    padding: 8px 20px;
+    border: 1px solid #AAA;
+    border-radius: 3px;
+}
+
+form button {
+    padding: 8px 20px;
+    border: 1px solid darkgreen;
+    width: 50%;
+    background: #36551F;
+    color: white;
+    border-radius: 3px;
+}
+
+fieldset {
+    border: 1px solid #AAA;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+fieldset legend {
+    padding: 0 10px;
+    color: #1F5F74;
+}
+
+fieldset div {
+    display: flex;
+    align-items: center;
+}
+
+fieldset label {
+    margin-left: 5px;
+}
+
+.boton_contraseñas {
+    margin: 3px 0;
+}
